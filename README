@@ -1,0 +1,5 @@
+= Browser based dictionary quizz.
+Random words will be selected from the dictionary and you have to provide the translation.
+
+== Notes
+- Romanian-English dictionary is located in js/dictionary.js
