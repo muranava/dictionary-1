@@ -1,10 +1,28 @@
 <html>
   <head>
     <title>Dictionary</title>
+    <style type="text/css">
+    body, input { font-family:Verdana, sans-serif; font-size:18px; }
+    #words { margin:100px 0 0 0; text-align:center; }
+    #footer { margin:120px; font-size:13px; color:#878787; text-align:center; }
+    h1 { color:#777; text-align:center; }
+    </style>
   </head>
   <body>
+    <h1>Dictionary Quizz</h1>
+    <div id="words"></div>
+    
+    <div id="footer">
+      <div>Refresh page in order to get another random word. - Copyright &copy; Radu Cojocaru</div>
+    </div>
     
     <script src="js/jquery-1.4.3.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/dictionary.js"></script>
+    <script>
+    $(document).ready(function(){
+      App.run(romanianEnglishDictionary, 'words');
+    });
+    </script>
   </body>
 </html>
