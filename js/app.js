@@ -9,6 +9,13 @@ var App = function(){
       dictionary = dictionaryIn;
       mainDivIDSelector = '#'+mainDivIDIn;
       
+      // Handle enter key press
+      $(window).keypress(function(e) {
+        if(e.keyCode == 13) {
+          $('#translation').show();
+        }
+      });
+      
       App.showNextEntry();
     },
     
@@ -20,7 +27,8 @@ var App = function(){
     
     // 
     display: function(entry) {
-      $(mainDivIDSelector).append(entry.from + " <input type='text' /> <input type='button' value='show' onclick=\"$('#translation').show();\" /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
+      $(mainDivIDSelector).append(entry.from + " <input type='text' class='entry' /> <input type='button' value='show' onclick=\"$('#translation').show();\" /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
+      $(mainDivIDSelector+' .entry').focus();
     },
     
     // Get random entry from the dictionary
