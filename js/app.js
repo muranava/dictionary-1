@@ -11,9 +11,7 @@ var App = function(){
       
       // Handle enter key press
       $(window).keypress(function(e) {
-        if(e.keyCode == 13) {
-          $('#translation').show();
-        }
+        App.handleKeyPress(e);
       });
       
       App.showNextEntry();
@@ -27,7 +25,7 @@ var App = function(){
     
     // 
     display: function(entry) {
-      $(mainDivIDSelector).append(entry.from + " <input type='text' class='entry' /> <input type='button' value='show' onclick=\"$('#translation').show();\" /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
+      $(mainDivIDSelector).html(entry.from + " <input type='text' class='entry' /> <input type='button' value='show' onclick=\"$('#translation').show();\" class='show' /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
       $(mainDivIDSelector+' .entry').focus();
     },
     
@@ -40,6 +38,24 @@ var App = function(){
     // Generate random number between min and max
     randomFromTo: function(from, to) {
       return Math.floor(Math.random() * (to - from + 1) + from);
+    },
+    
+    // Show translation div
+    showTranslation: function() {
+      $('#translation').show();
+    },
+    
+    // Handle key presses:
+    // - show next entry on '0' or '9' press
+    // - show translation on enter press
+    handleKeyPress: function(e) {
+      if (e.keyCode == 13) { // enter
+        App.showTranslation();
+        $(mainDivIDSelector+' .show').focus();
+      }
+      else if (e.charCode == 48 || e.charCode == 57) { // '0' / '9'
+        setTimeout(function(){ App.showNextEntry(); }, 50);
+      }
     }
   }
 }();
