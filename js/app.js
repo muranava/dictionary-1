@@ -1,6 +1,5 @@
 var App = function(){
-  var dictionary;
-  var mainDivIDSelector;
+  var dictionary, mainDivIDSelector, ids = [];
   
   return {
     
@@ -14,24 +13,44 @@ var App = function(){
         App.handleKeyPress(e);
       });
       
+      $(mainDivIDSelector).html('<div class="new"></div><div class="missed" style="text-align:left; margin-top:20px; font-size:12px;"></div>')
+      
       App.showNextEntry();
     },
     
     // Extract random entry and display it
     showNextEntry: function() {
-      var entry = App.getRandomEntry();
+      entry = App.getRandomEntry();
       App.display(entry);
+    },
+    
+    delayedNextEntry: function() {
+      setTimeout(function(){ App.showNextEntry(); }, 50);
+    },
+    
+    missed: function() {
+      // Add current entry to missed list
+      var currentEntry = dictionary.entries[ids[ids.length-1]];
+      $(mainDivIDSelector+' .missed').append(currentEntry.from+' = '+currentEntry.to+', ')
+      
+      App.delayedNextEntry();
     },
     
     // 
     display: function(entry) {
-      $(mainDivIDSelector).html(entry.from + " <input type='text' class='entry' /> <input type='button' value='show' onclick=\"$('#translation').show();\" class='show' /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
+      $(mainDivIDSelector+' .new').html(entry.from + " <input type='text' class='entry' /> <input type='button' value='show' onclick=\"$('#translation').show();\" class='show' /> <span id='translation' style='display:none;'>" + entry.to + "</span>");
       $(mainDivIDSelector+' .entry').focus();
     },
     
     // Get random entry from the dictionary
     getRandomEntry: function() {
-      var entryIndex = App.randomFromTo(0, dictionary.entries.length);
+      var entryIndex;
+      // Select an entry that was not displayed already
+      do {
+        entryIndex = App.randomFromTo(0, dictionary.entries.length);
+      } while ($.inArray(entryIndex, ids) != -1);
+      
+      ids.push(entryIndex);
       return dictionary.entries[entryIndex];
     },
 
@@ -53,8 +72,11 @@ var App = function(){
         App.showTranslation();
         $(mainDivIDSelector+' .show').focus();
       }
+      else if (e.charCode == 47) { // '?'
+        App.missed();
+      }
       else if (e.charCode == 48 || e.charCode == 57) { // '0' / '9'
-        setTimeout(function(){ App.showNextEntry(); }, 50);
+        App.delayedNextEntry();
       }
     }
   }
