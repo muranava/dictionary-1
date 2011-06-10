@@ -160,7 +160,7 @@ var romanianEnglishDictionary = {
     { from:"irachian", to:"Iraqi" },
     { from:"Palestina", to:"Palestine" },
     { from:"gat inflamat", to:"sore throat" },
-    { from:"'te doar tot corpul'", to:"your hole body aches" },
+    { from:"'te doar tot corpul'", to:"your whole body aches" },
     { from:"'cand esti racit'", to:"when you have flu" },
     { from:"tuse", to:"cough" },
     { from:"medicamente", to:"medicines / drugs" },
