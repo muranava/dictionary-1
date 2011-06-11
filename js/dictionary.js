@@ -174,7 +174,6 @@ var romanianEnglishDictionary = {
     { from:"'nu mi-a picat bine' (mancare)", to:"didn't agree with me" },
     { from:"fotbalist", to:"footballer" },
     { from:"'a apara un sut'", to:"to save a shut" },
-    { from:"arbitru", to:"referee" },
     { from:"a elimina (fotbal)", to:"to send off" },
     { from:"a face egalitatea", to:"to draw" },
     { from:"'a se lovi de'", to:"to crash into" },
