@@ -773,8 +773,8 @@ var romanianEnglishDictionary = {
     { from:"colesterol", to:"cholesterol" },
     { from:"Calea Lactee", to:"Milky Way" },
     { from:"crater (Luna)", to:"crater" },
+    { from:"scari rulante", to:"escalators" },
     /*
-    { from:"", to:"" },
     { from:"", to:"" },
     { from:"", to:"" },
     { from:"", to:"" },
