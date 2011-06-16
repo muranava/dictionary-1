@@ -165,7 +165,7 @@ var romanianEnglishDictionary = {
     { from:"tuse", to:"cough" },
     { from:"medicamente", to:"medicines / drugs" },
     { from:"nas infundat", to:"blocked nose" },
-    { from:"curge nasl", to:"runny nose" },
+    { from:"curge nasul", to:"runny nose" },
     { from:"batista", to:"handkerchief" },
     { from:"diaree", to:"diarrhea" },
     { from:"a se simte slabit", to:"to feel feint" },
